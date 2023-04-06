@@ -29,7 +29,7 @@
             <div class="card">
               <div class="card-image pt-5">
                 <figure class="image">
-                  <img style="height: 120px" :src="showimg(blog.file_path)" alt="Placeholder image" />
+                  <img style="height: 120px" :src="'http://localhost:3000' + blog.file_path" alt="Placeholder image" />
                 </figure>
               </div>
               <div class="card-content">
@@ -72,14 +72,6 @@ export default {
       }
       catch (error) {
         console.log("error");
-      }
-    },
-    showimg(path) {
-      try {
-        let file = require(`../assets/static${path}`)
-        return file;
-      } catch (error) {
-        return "https://bulma.io/images/placeholders/640x360.png"
       }
     }
   },

@@ -21,7 +21,7 @@
                         <div class="columns">
                             <div class="column" v-for="img in data.images" :key="img.id">
                                 <figure class="image">
-                                    <img :src="showimg(img.file_path)" alt="Placeholder image">
+                                    <img :src="'http://localhost:3000' + img.file_path" alt="Placeholder image">
                                 </figure>
                             </div>
                         </div>
@@ -37,7 +37,8 @@
                                 <article class="media">
                                     <div class="media-left">
                                         <figure class="image is-64x64">
-                                            <img :src="showimg(comment.file_path)"
+                                            <img :src="comment.file_path ? 'http://localhost:3000' + comment.file_path : 
+                                            'https://bulma.io/images/placeholders/640x360.png'"
                                                 alt="Image">
                                         </figure>
                                     </div>
@@ -135,14 +136,6 @@ export default {
                 }).catch(error => {
                     console.log(error.message);
                 });
-            }
-        },
-        showimg(path){
-            try {
-                let file = require(`../../assets/static${path}`)
-                return file;
-            } catch (error) {
-                return "https://bulma.io/images/placeholders/640x360.png"
             }
         }
     },

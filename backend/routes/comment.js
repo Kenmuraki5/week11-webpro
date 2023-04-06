@@ -9,7 +9,7 @@ const multer = require('multer')
 // SET STORAGE
 var storage = multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, '../myfrontend/src/assets/static/uploads')
+    callback(null, './static/uploads')
   },
   filename: function (req, file, callback) {
     callback(null, file.fieldname+ '-' + Date.now() + path.extname(file.originalname))
@@ -37,7 +37,7 @@ router.post('/:blogId/comments', upload.single('blog_image'), async function(req
       if(file){
         await conn.query(
           "INSERT INTO images(blog_id, file_path, comment_id) VALUES(?, ?, ?);",
-          [req.params.blogId, file.path.replace("../myfrontend/src/assets/static", ""), Id])
+          [req.params.blogId, file.path.substr(6), Id])
       }
       await conn.commit()
       res.json(`success`);
