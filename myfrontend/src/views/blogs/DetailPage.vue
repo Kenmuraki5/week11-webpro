@@ -131,7 +131,7 @@ export default {
                     }
                 }).then((response) => {
                     console.log(response)
-                    // this.$router.push({ path: `/blogs/${this.$route.params.id}` })// Success! -> redirect to home page
+                    location.reload()
                 }).catch(error => {
                     console.log(error.message);
                 });
