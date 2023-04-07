@@ -101,7 +101,8 @@
           console.log(response) // Success! -> redirect to home page
         })
           .catch(error => {
-            console.log(error.message);
+            alert("please upload file");
+            console.log(error)
           });
       },
       backhome(){
