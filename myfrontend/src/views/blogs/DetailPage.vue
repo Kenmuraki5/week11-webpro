@@ -131,8 +131,8 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then((response) => {
-                    console.log(response)
-                    location.reload()
+                    console.log(this.data.comments =  response.data.comments)
+                    this.comment = null
                 }).catch(error => {
                     console.log(error.message);
                 });

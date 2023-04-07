@@ -40,6 +40,7 @@ router.post("/blogs/addlike/:blogId", async function (req, res, next) {
     const [rows2, fields2] = await pool.query("UPDATE blogs SET blogs.like=? WHERE blogs.id=?", [
       likeNum, req.params.blogId,
     ]);
+    res.send("message")
   } catch (err) {
     return next(err);
   }

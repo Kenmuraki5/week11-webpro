@@ -39,7 +39,7 @@
               <footer class="card-footer">
                 <router-link :to="{ name: 'BlogDetail', params: { id: blog.id } }" class="card-footer-item">Read
                   more...</router-link>
-                <a href="/" class="card-footer-item" @click="addLike(blog.id)">
+                <a class="card-footer-item" @click="addLike(blog)">
                   <span class="icon-text">
                     <span class="icon">
                       <i class="far fa-heart"></i>
@@ -66,9 +66,11 @@ export default {
     };
   },
   methods: {
-    async addLike(id) {
+    async addLike(blog) {
       try {
-        await axios.post(`http://localhost:3000/blogs/addlike/${id}`);
+        let response = await axios.post(`http://localhost:3000/blogs/addlike/${blog.id}`);
+        console.log(response);
+        blog.like++;
       }
       catch (error) {
         console.log("error");

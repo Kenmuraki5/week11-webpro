@@ -40,7 +40,7 @@ router.post('/:blogId/comments', upload.single('blog_image'), async function(req
           [req.params.blogId, file.path.substr(6), Id])
       }
       await conn.commit()
-      res.json(`success`);
+      res.redirect(`/blogs/${req.params.blogId}`)
     } catch (err) {
       await conn.rollback();
       next(err);
